@@ -1,15 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import useForm from "./useForm";
 
-const SignUpForm = () => {
-    const [values, setValues] = useState({
-        fullname: "",
-        email: "",
-        password: "",
-    });
-
-    const handleFormSubmit = (event) => {
-        event.preventDefault();
-    };
+const SignUpForm = ({ submitForm }) => {
+  const { handleChange, handleFormSubmit, values, errors } = useForm(submitForm);
   return (
     <div className="container">
         <div className="app-wrapper">
@@ -26,6 +19,7 @@ const SignUpForm = () => {
                         value={values.fullname}
                         onChange={handleChange}
                     />
+                    {errors.fullname && <p className="error">{errors.fullname}</p>}
                 </div>
                 <div className="email">
                     <label className="label">Email</label>
@@ -36,6 +30,7 @@ const SignUpForm = () => {
                         value={values.email}
                         onChange={handleChange}
                     />
+                    {errors.email && <p className="error">{errors.email}</p>}
                 </div>
                 <div className="password">
                     <label className="label">Password</label>
@@ -46,6 +41,7 @@ const SignUpForm = () => {
                         value={values.password}
                         onChange={handleChange}
                     />
+                    {errors.password && <p className="error">{errors.password}</p>}
                 </div>
                 <button className="submit" onClick={handleFormSubmit}>Sign Up</button>
             </form>
