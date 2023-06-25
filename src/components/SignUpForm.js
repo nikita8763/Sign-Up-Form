@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import useForm from "./useForm";
 
 const SignUpForm = ({ submitForm }) => {
@@ -43,10 +43,11 @@ const SignUpForm = ({ submitForm }) => {
                     />
                     {errors.password && <p className="error">{errors.password}</p>}
                 </div>
-                <button className="submit" onClick={handleFormSubmit}>Sign Up</button>
+                <div>
+                    <button className="submit" onClick={handleFormSubmit}>Sign Up</button>
+                </div>
             </form>
         </div>
-
     </div>
   );
 };

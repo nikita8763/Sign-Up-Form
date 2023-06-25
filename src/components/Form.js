@@ -10,9 +10,9 @@ const Form = () => {
     };
   return (
     <div>
-        { !formIsSubmitted ? <SignUpForm submitForm={submitForm}/> : <SignupFormSuccess />}
+        { !formIsSubmitted ? ( <SignUpForm submitForm={submitForm}/> ) : ( <SignupFormSuccess /> )}
     </div>
-  )
-}
+  );
+}; 
 
 export default Form;

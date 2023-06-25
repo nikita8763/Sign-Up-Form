@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import {useState, useEffect} from "react";
 import validation from "./validation";
 
 const useForm = (submitForm) => {
@@ -18,19 +18,19 @@ const useForm = (submitForm) => {
         });
     };
 
-    useEffect(() =>{
-        if(Object.keys(errors).length === 0 && dataIsCorrect){
-            submitForm(true);
-        }
-    },[errors]);
-
     const handleFormSubmit = (event) => {
         event.preventDefault();
         setErrors(validation(values));
         setDataIsCorrect(true);
     };
 
-    return {handleChange, handleFormSubmit, errors, values};
+    useEffect(() =>{
+        if(Object.keys(errors).length === 0 && dataIsCorrect){
+            submitForm(true);
+        }
+    }, [errors]);
+
+    return { handleChange, handleFormSubmit, errors, values };
 };
 
 export default useForm;
